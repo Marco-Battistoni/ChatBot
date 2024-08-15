@@ -30,30 +30,28 @@ body {
     height: 250px;
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  /* Espacio entre mensajes */
 }
 
 .chat-message {
-    margin-bottom: 10px;  /* Espacio entre mensajes */
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;  /* Ancho máximo del mensaje */
+    word-break: break-word;  /* Asegurarse de que las palabras largas no rompan el diseño */
 }
 
 .bot-message {
     background-color: #e9e9eb;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 90%;
-    display: block;  /* Asegurarse de que los mensajes de la bot estén en bloques separados */
-    word-break: break-word;  /* Asegurarse de que las palabras largas no rompan el diseño */
+    align-self: flex-start;  /* Alinea los mensajes del bot a la izquierda */
 }
 
 .user-message {
     background-color: #007bff;
     color: white;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 90%;
-    display: block;  /* Asegurarse de que los mensajes del usuario estén en bloques separados */
-    align-self: flex-end;
-    word-break: break-word;
+    align-self: flex-end;  /* Alinea los mensajes del usuario a la derecha */
 }
 
 .user-input {
