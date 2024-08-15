@@ -63,6 +63,7 @@ const questions = [
 
 // Variables para rastrear el estado del juego
 let currentQuestion;  // Pregunta actual
+let previousQuestionIndex = -1;  // Índice de la pregunta anterior
 let currentHintIndex = 0;  // Índice de la pista actual
 let score = 0;  // Puntuación del usuario
 let gameStarted = false;  // Indica si el juego ha comenzado
@@ -98,9 +99,13 @@ function addMessage(text, className) {
     chatBox.scrollTop = chatBox.scrollHeight;  // Desplazarse hacia abajo para mostrar el último mensaje
 }
 
-// Función para seleccionar una pregunta aleatoria
+// Función para seleccionar una pregunta aleatoria sin repetir la anterior
 function getRandomQuestion() {
-    const randomIndex = Math.floor(Math.random() * questions.length);
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * questions.length);
+    } while (randomIndex === previousQuestionIndex);
+    previousQuestionIndex = randomIndex;
     return questions[randomIndex];
 }
 
@@ -123,11 +128,12 @@ function showTextQuestion(question) {
 
 // Función para mostrar una pregunta de opción múltiple
 function showMultipleChoiceQuestion(question) {
-    let optionsText = '';
+    addMessage(question.question, 'bot-message');  // Mostrar la pregunta
+
+    // Mostrar cada opción en un mensaje separado
     for (const [key, value] of Object.entries(question.options)) {
-        optionsText += `${key}) ${value}\n`;
+        addMessage(`${key}) ${value}`, 'bot-message');
     }
-    addMessage(question.question + '\n' + optionsText, 'bot-message');  // Mostrar la pregunta y opciones
 }
 
 // Función para mostrar una pista
