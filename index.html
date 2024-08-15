@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="score-box">
+            <span>Puntos: </span><span id="score">0</span>
+        </div>
+        <div id="chat-box" class="chat-box">
+            <div class="chat-message bot-message">
+                ¡Hola! ¿Listo para jugar a la trivia? Escribe "empezar" para comenzar.
+            </div>
+        </div>
+        <input type="text" id="user-input" class="user-input" placeholder="Escribe tu mensaje aquí...">
+        <button id="send-button" class="send-button">Enviar</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
