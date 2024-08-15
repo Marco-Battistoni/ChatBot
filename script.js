@@ -51,7 +51,7 @@ sendButton.addEventListener('click', () => {
     addMessage(userText, 'user-message');  // Añadir mensaje del usuario al chat
     userInput.value = '';  // Limpiar la entrada de texto
 
-    if (currentQuestionIndex === 0 && userText.toLowerCase() === "empezar") {
+    if (currentQuestionIndex === 0 && userText.toLowerCase() === "start") {
         askQuestion();  // Iniciar la trivia si el usuario escribe "empezar"
     } else {
         checkAnswer(userText);  // Verificar la respuesta del usuario
@@ -76,7 +76,7 @@ function askQuestion() {
 
 // Función para mostrar una pista
 function showHint() {
-    addMessage("Pista: " + questions[currentQuestionIndex].hints[currentHintIndex], 'bot-message');  // Mostrar la pista actual
+    addMessage("Hint: " + questions[currentQuestionIndex].hints[currentHintIndex], 'bot-message');  // Mostrar la pista actual
 }
 
 // Función para verificar la respuesta del usuario
@@ -101,7 +101,7 @@ function handleCorrectAnswer() {
     }
     score += points;  // Sumar puntos
     updateScore();  // Actualizar la puntuación en la pantalla
-    addMessage('¡Correcto! Ganaste ' + points + ' puntos.', 'bot-message');  // Informar al usuario
+    addMessage('Perfect! +' + points + ' points.', 'bot-message');  // Informar al usuario
     moveToNextQuestion();  // Pasar a la siguiente pregunta
 }
 
@@ -113,7 +113,7 @@ function handleIncorrectAnswer() {
     } else {
         score -= 3;  // Restar 3 puntos si falla después de 3 pistas
         updateScore();  // Actualizar la puntuación
-        addMessage('Incorrecto. La respuesta correcta era: ' + questions[currentQuestionIndex].answer + '. Pierdes 3 puntos.', 'bot-message');  // Informar al usuario
+        addMessage('Wrong. The correct answer was: ' + questions[currentQuestionIndex].answer + '. -3 points.', 'bot-message');  // Informar al usuario
         moveToNextQuestion();  // Pasar a la siguiente pregunta
     }
 }
@@ -124,7 +124,7 @@ function moveToNextQuestion() {
     if (currentQuestionIndex < questions.length) {
         askQuestion();  // Hacer la siguiente pregunta
     } else {
-        addMessage('¡Felicidades, has terminado la trivia! Tu puntuación final es ' + score + ' puntos.', 'bot-message');  // Informar que terminó el juego
+        addMessage('congratulations, you have finished the trivia! Your final punctuation is ' + score + ' points.', 'bot-message');  // Informar que terminó el juego
         currentQuestionIndex = 0;  // Reiniciar para un nuevo juego
         score = 0;  // Reiniciar la puntuación
         updateScore();  // Actualizar la pantalla
