@@ -36,6 +36,7 @@ const questions = [
 let currentQuestionIndex = 0;  // Índice de la pregunta actual
 let currentHintIndex = 0;  // Índice de la pista actual
 let score = 0;  // Puntuación del usuario
+let gameStarted = false;  // Indica si el juego ha comenzado
 
 // Pulsar "Enter" activa el botón "Enviar"
 userInput.addEventListener('keypress', (event) => {
@@ -51,8 +52,9 @@ sendButton.addEventListener('click', () => {
     addMessage(userText, 'user-message');  // Añadir mensaje del usuario al chat
     userInput.value = '';  // Limpiar la entrada de texto
 
-    if (currentQuestionIndex === 0 && userText.toLowerCase() === "start") {
-        askQuestion();  // Iniciar la trivia si el usuario escribe "empezar"
+    if (!gameStarted) {
+        gameStarted = true;  // Marcar el juego como comenzado
+        askQuestion();  // Iniciar la primera pregunta
     } else {
         checkAnswer(userText);  // Verificar la respuesta del usuario
     }
@@ -124,10 +126,11 @@ function moveToNextQuestion() {
     if (currentQuestionIndex < questions.length) {
         askQuestion();  // Hacer la siguiente pregunta
     } else {
-        addMessage('congratulations, you have finished the trivia! Your final punctuation is ' + score + ' points.', 'bot-message');  // Informar que terminó el juego
+        addMessage('Congratulations, you have finished the trivia! Your final score is ' + score + ' points.', 'bot-message');  // Informar que terminó el juego
         currentQuestionIndex = 0;  // Reiniciar para un nuevo juego
         score = 0;  // Reiniciar la puntuación
         updateScore();  // Actualizar la pantalla
+        gameStarted = false;  // Reiniciar el estado del juego
     }
 }
 
