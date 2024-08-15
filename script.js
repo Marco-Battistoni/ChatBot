@@ -37,27 +37,27 @@ const questions = [
     },
     {
         type: 'multiple-choice',
-        question: "Which of the following is a primary color?",
+        question: "A good or service which people would like to have, but which is not essential for living is the deffinition of:",
         options: {
-            A: "Red",
-            B: "Green",
-            C: "Purple",
-            D: "Orange"
+            A: "Need",
+            B: "Want",
+            C: "Scarcity",
+            D: "Business"
         },
-        answer: "A",  // La letra de la opción correcta
-        correctAnswer: "Red"  // La palabra de la opción correcta
+        answer: "B",  // La letra de la opción correcta
+        correctAnswer: "Want"  // La palabra de la opción correcta
     },
     {
         type: 'multiple-choice',
-        question: "Which planet is known as the Red Planet?",
+        question: "Which of the following is an example of a public sector enterprise?",
         options: {
-            A: "Earth",
-            B: "Mars",
-            C: "Jupiter",
-            D: "Venus"
+            A: "A privately-owned bakery",
+            B: "A government-run hospital",
+            C: "A franchise restaurant",
+            D: "A joint venture partnership"
         },
         answer: "B",
-        correctAnswer: "Mars"
+        correctAnswer: "A government-run hospital"
     }
 ];
 
